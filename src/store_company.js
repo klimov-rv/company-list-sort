@@ -2,39 +2,47 @@ import { ref } from 'vue'
 
 export const store = ref({
     isShowModal: false,
-    companyList: [{
-        id: 313,
-        title: "Сбербанк",
-        phone: "+7 941 123 21 42",
+    companyList: [],
+    // companyList: [{
+    //     id: 313,
+    //     title: "Сбербанк",
+    //     phone: "+7 941 123 21 42",
+    // },
+    // {
+    //     id: 311,
+    //     title: "Яндекс",
+    //     phone: "+7 312 312 31 23",
+    // },
+    // {
+    //     id: 111,
+    //     title: "VK Group",
+    //     phone: "+7 123 999 99 99",
+    //     child_ids: [33, 55],
+    // },
+    // {
+    //     id: 33,
+    //     title: "VK",
+    //     phone: "+7 123 999 99 99",
+    //     parent_id: 111,
+    // },
+    // {
+    //     id: 55,
+    //     title: "Mail.ru",
+    //     phone: "+7 123 999 99 99",
+    //     parent_id: 111,
+    // },
+    // {
+    //     id: 17,
+    //     title: "Ozon",
+    //     phone: "+7 123 999 42 42",
+    // }],
+    initStore() {
+        // const inBrowser = typeof window !== 'undefined';
+        if (typeof window !== 'undefined') {
+            const company_data = JSON.parse(localStorage.getItem('company_data'));
+            this.companyList = company_data;
+        }
     },
-    {
-        id: 311,
-        title: "Яндекс",
-        phone: "+7 312 312 31 23",
-    },
-    {
-        id: 111,
-        title: "VK Group",
-        phone: "+7 123 999 99 99",
-        child_ids: [33, 55],
-    },
-    {
-        id: 33,
-        title: "VK",
-        phone: "+7 123 999 99 99",
-        parent_id: 111,
-    },
-    {
-        id: 55,
-        title: "Mail.ru",
-        phone: "+7 123 999 99 99",
-        parent_id: 111,
-    },
-    {
-        id: 17,
-        title: "Ozon",
-        phone: "+7 123 999 42 42",
-    }],
     openModal() {
         this.isShowModal = true;
     },
@@ -53,16 +61,20 @@ export const store = ref({
     },
     addChild(parent_id, child_id) {
         const finded = this.companyList.find((element) => element.id === parent_id);
-        if (finded) { 
-            if (finded.child_ids) { 
+        if (finded) {
+            if (finded.child_ids) {
                 finded.child_ids.push(child_id);
-            } else { 
+            } else {
                 finded.child_ids = [child_id];
             }
-        } 
+        }
     },
     addCompanyHandler(company) {
-        this.addChild(company.parent_company_id, this.addCompany(company));
+        this.addChild(
+            company.parent_company_id,
+            this.addCompany(company)
+        );
         this.closeModal();
+        localStorage.setItem('company_data', JSON.stringify(this.companyList));
     }
 })

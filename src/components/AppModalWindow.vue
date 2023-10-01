@@ -33,15 +33,23 @@ function updateId(id_value: number) {
 <style scoped>
 .modal {
   position: fixed;
-  width: 300px;
+  min-width: 430px;
   z-index: 9999;
   margin: 0 auto;
   padding: 20px 30px;
   background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 10px;
+  background: #ffffff;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
 }
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 16px;
+  right: 16px;
 }
 </style>

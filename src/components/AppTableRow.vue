@@ -12,6 +12,7 @@ const isShowChildList = ref<boolean>(false);
       <span
         v-if="tableRow.isParent"
         @click="isShowChildList = !isShowChildList"
+        :class="{'opened': isShowChildList}"
       >
         +
       </span>

@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { TableRow } from "./../types/TableRow";
-import { nextTick, computed } from "vue";
-import { store } from "./../store_company.js";
 import { table_store } from "./../store_table_data.js";
 import AppTableRow from "./AppTableRow.vue";
 
 table_store.value.initTableData();
-const tableData = table_store.value.getTableData();
 
 let sortDirection = 1;
 let sortKey = "";
@@ -18,39 +15,41 @@ async function sortBy(key: any) {
     sortDirection = 1;
     sortKey = key;
   }
-  table_store.value.sortTableData(key, sortDirection);  
+  table_store.value.sortTableData(key, sortDirection);
 }
 
-function sortIcon(key: any) {
-  if (sortKey === key) {
-    return sortDirection && "fas fa-chevron-down";
-  }
-  return;
-}
-
-function iconStyle(key: any) {
+function iconTurn(key: any) {
   if (sortKey === key) {
     return { transform: `rotate(${sortDirection === 1 ? 0 : 180}deg)` };
   }
-  return {};
 }
 </script>
-<template lang="">
-  <div style="display: flex;">
-    <div class="table_wrapper">
+<template lang=""> 
+  <div style="display: flex; margin-bottom: 15px;">
+    <div class="table_wrapper" v-if="table_store.data.length">
       <table>
         <colgroup>
           <col style="width: 230px;" />
           <col style="width: 50%;" />
         </colgroup>
         <tr>
-          <th @click="sortBy('td1')">
+          <th @click="sortBy('td1')" style="cursor: pointer;">
             Компания
-            <i :class="sortIcon('name')" :style="iconStyle('name')"></i>
+            <i
+              v-if="sortKey === 'td1'"
+              class="sort-icon"
+              :style="iconTurn('td1')"
+              >></i
+            >
           </th>
-          <th @click="sortBy('td2')">
+          <th @click="sortBy('td2')" style="cursor: pointer;">
             Телефон
-            <i :class="sortIcon('phone')" :style="iconStyle('phone')"></i>
+            <i
+              v-if="sortKey === 'td2'"
+              class="sort-icon"
+              :style="iconTurn('td2')"
+              >></i
+            >
           </th>
         </tr>
         <AppTableRow

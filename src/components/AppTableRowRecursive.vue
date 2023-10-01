@@ -22,6 +22,7 @@ const tabulation = "&nbsp;&nbsp;&nbsp;&nbsp;".repeat(tabRepeat);
       <span
         v-if="tableRow.isParent"
         @click="isShowChildList = !isShowChildList"
+        :class="{'opened': isShowChildList}"
       >
         +
       </span>
