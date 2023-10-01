@@ -6,7 +6,7 @@
   padding: 2rem;
 
   font-weight: normal;
-  background-color: rgb(249, 249, 249);
+  /* background-color: rgb(249, 249, 249); */
   height: 100vh;
   display: flex;
   flex-direction: column;

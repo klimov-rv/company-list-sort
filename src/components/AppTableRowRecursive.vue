@@ -1,14 +1,24 @@
 <script lang="ts" setup>
+const props = withDefaults(
+  defineProps<{
+    tableRow: Object;
+    tabLevel?: number | undefined;
+  }>(),
+  {
+    tabLevel: 0,
+  }
+);
+
 import { ref } from "vue";
-defineProps<{
-  tableRow: Object;
-}>();
-import AppTableRowRecursive from "./AppTableRowRecursive.vue";
+import type { TableRow } from "./../types/TableRow";
 const isShowChildList = ref<boolean>(false);
+const tabRepeat = props.tabLevel + 1;
+const tabulation = "&nbsp;&nbsp;&nbsp;&nbsp;".repeat(tabRepeat);
 </script>
 <template lang="">
   <tr>
     <td>
+      <span v-html="tabulation"></span>
       <span
         v-if="tableRow.isParent"
         @click="isShowChildList = !isShowChildList"
@@ -26,6 +36,7 @@ const isShowChildList = ref<boolean>(false);
     v-for="item in tableRow.child_rows"
     :key="item.id"
     :tableRow="item"
+    :tabLevel="tabLevel + 1"
   />
 </template>
 <style lang=""></style>

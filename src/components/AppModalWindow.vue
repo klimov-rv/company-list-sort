@@ -1,16 +1,19 @@
 <script lang="ts" setup>
+import type { Company } from "./../types/Company";
 import { ref } from "vue";
 import { store } from "./../store_company.js";
 import AppSelect from "./AppSelect.vue";
 import AppButtonAdd from "./AppButtonAdd.vue";
-import type { Company } from "./../types/Company";
 
 const newCompany = ref<Company>({
   id: 0,
   title: "",
   phone: "+7",
-  parent_company_id: 1,
+  parent_company_id: null,
 });
+function updateId(id_value: number) {
+  newCompany.value.parent_company_id = id_value;
+}
 </script>
 <template>
   <div class="modal" v-if="store.isShowModal">
@@ -21,14 +24,9 @@ const newCompany = ref<Company>({
     <p>Телефон компании</p>
     <input v-model="newCompany.phone" placeholder="Введите название..." />
     <p>Выберите родительскую компанию</p>
-    <input
-      v-model="newCompany.parent_company_id"
-      placeholder="Введите название..."
-    />
-
-    <AppSelect :company="newCompany" />
-    <p>Добавить и закрыть</p>
-    <pre>{{ newCompany }}</pre>
+    <AppSelect @change:selected="updateId" />
+    <p></p>
+    <!-- <pre>{{ newCompany }}</pre> -->
     <AppButtonAdd :company="newCompany" />
   </div>
 </template>
