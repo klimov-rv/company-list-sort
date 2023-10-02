@@ -8,7 +8,7 @@ export const table_store = ref({
     initTableData() {
         this.data = computed(() => mutateForTable(store.value.companyList, undefined, true));
         const table_sort = JSON.parse(localStorage.getItem('table_sort'));
-        if (typeof table_sort === 'object') {
+        if (table_sort) {
             this.sortTableData(table_sort.key, table_sort.direction);
         }
     },
