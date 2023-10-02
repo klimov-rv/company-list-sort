@@ -40,7 +40,9 @@ export const store = ref({
         // const inBrowser = typeof window !== 'undefined';
         if (typeof window !== 'undefined') {
             const company_data = JSON.parse(localStorage.getItem('company_data'));
-            this.companyList = company_data;
+            if (company_data) {
+                this.companyList = company_data;
+            }
         }
     },
     openModal() {

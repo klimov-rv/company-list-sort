@@ -3,6 +3,9 @@ function mutateForTable(firstLevelList, currLevelList, isFirstLevel = false, sor
     currLevelList = (typeof currLevelList === 'undefined') ? firstLevelList : currLevelList;
     const doubles_ids = []
 
+    if (!currLevelList) {
+        return
+    }
 
     function sortData(tableData) {
         return tableData.sort((a, b) => {

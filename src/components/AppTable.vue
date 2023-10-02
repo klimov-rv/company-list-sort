@@ -26,7 +26,7 @@ function iconTurn(key: any) {
 </script>
 <template lang=""> 
   <div style="display: flex; margin-bottom: 15px;">
-    <div class="table_wrapper" v-if="table_store.data.length">
+    <div class="table_wrapper" v-if="table_store.data?.length">
       <table>
         <colgroup>
           <col style="width: 230px;" />

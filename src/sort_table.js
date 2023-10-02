@@ -1,5 +1,9 @@
 function sortTable(currLevelData, sortKey, sortDirection) {
 
+    if (!currLevelData) {
+        return
+    }
+    
     function sortData(tableData) {
         return tableData.sort((a, b) => {
             if (a[sortKey] > b[sortKey]) return sortDirection;
