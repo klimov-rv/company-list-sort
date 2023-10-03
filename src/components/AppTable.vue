@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TableRow } from "./../types/TableRow";
-import { table_store } from "./../store_table_data.js";
+import { table_store } from "@/store_table_data.js";
 import AppTableRow from "./AppTableRow.vue";
 
 table_store.value.initTableData();

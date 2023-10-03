@@ -4,7 +4,7 @@ import AppTable from "./components/AppTable.vue";
 import AppButton from "./components/AppButton.vue";
 import AppModal from "./components/AppModal.vue";
 
-import { store } from "./store_company.js";
+import { store } from "@/store_company.js";
 
 store.value.initStore();
 
