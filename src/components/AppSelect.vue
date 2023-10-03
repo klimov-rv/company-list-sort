@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { store } from "./../store_company.js";
+import { store } from "@/store_company.js";
 
 const selectedCompany = ref<number>(0);
 defineEmits(["change:selected"]);

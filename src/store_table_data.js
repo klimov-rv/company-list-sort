@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
-import { store } from "./store_company.js";
-import mutateForTable from "./mutate_to_table.js";
-import sortTable from "./sort_table.js";
+import { store } from "@/store_company.js";
+import mutateForTable from "@/mutate_to_table.js";
+import sortTable from "@/sort_table.js";
 
 export const table_store = ref({
     data: [],

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Company } from "./../types/Company";
+import type { Company } from "@/types/Company";
 import { ref } from "vue";
-import { store } from "./../store_company.js";
+import { store } from "@/store_company.js";
 import AppSelect from "./AppSelect.vue";
 import AppButtonAdd from "./AppButtonAdd.vue";
 

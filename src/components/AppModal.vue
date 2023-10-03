@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { store } from "./../store_company.js";
-import AppModalWindow from "./AppModalWindow.vue";
+import { store } from "@/store_company.js";
+import AppModalWindow from "@/AppModalWindow.vue";
 </script>
 <template>
   <div class="overlay" v-if="store.isShowModal" @click="store.closeModal"></div>
@@ -20,5 +20,4 @@ import AppModalWindow from "./AppModalWindow.vue";
   justify-content: center;
   align-items: center;
 }
-</style>
-../store_company.js
+</style> 
